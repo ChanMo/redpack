@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="main-border">
+  {% for i in range(0,4) %}
+  <img src="img/border.png">
+  {% endfor %}
+</div>
+
+<span id="footer">中养消费养老</span>
+
+
+<h2>
+<img src="img/ingot.svg">
+  2017新春红包
+</h2>
+
+<button id="main-action" class="button button_hollow" data-modal-toggle>点我抢红包</button>
+
+<div class="box">
+<table>
+  <caption>中奖记录</caption>
+  {% for i in range(0, 10) %}
+  <tr>
+    <td>用户名{{i}}</td>
+    <td>66</td>
+    <td>2017-01-28 12:01:14</td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+
+<div class="modal-bg" data-modal-toggle></div>
+<div class="modal">
+  <div class="modal__main">
+  <img src="img/redpack.svg">
+  <p>恭喜您抢到价值66元现金红包！</p>
+  <button class="button button_hollow button_size_small" data-modal-toggle>确&nbsp;&nbsp;定</button>
+  </div>
+</div>
+{% endblock %} 
