@@ -38,18 +38,18 @@ gulp.task('js', function(){
 gulp.task('images', function(){
     return gulp.src('src/img/**/*.+(png|jpg|gif|svg)')
         .pipe(imagemin())
-        .pipe(gulp.dest('doc/img'));
+        .pipe(gulp.dest('docs/img'));
 });
 
 /** fonts **/
 gulp.task('fonts', function(){
     return gulp.src('src/fonts/**/*')
-        .pipe(gulp.dest('doc/fonts'));
+        .pipe(gulp.dest('docs/fonts'));
 });
 
 /** clean for build **/
 gulp.task('clean', function(){
-    return del.sync('doc');
+    return del.sync('docs');
 });
 
 
@@ -59,7 +59,7 @@ gulp.task('useref', function(){
         .pipe(useref())
         .pipe(gulpIf('*.js', uglify()))
         .pipe(gulpIf('*.css', cssnano()))
-        .pipe(gulp.dest('doc'));
+        .pipe(gulp.dest('docs'));
 });
 
 /** nunjucksRender **/
