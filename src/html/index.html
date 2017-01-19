@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% set log_list = [{'name':'孙悟空','price':'88'},{'name':'八戒','price':'66'},{'name':'沙僧','price':'6.6'},{'name':'御弟哥哥','price':'8.8'},{'name':'二郎神','price':'88'},{'name':'小白龙','price':'66'},{'name':'三毛','price':'8.8'},{'name':'哪吒','price':'6.6'},{'name':'金刚葫芦娃','price':'8.8'}] %} 
 {% block main %}
 <div class="main-border">
   {% for i in range(0,4) %}
@@ -13,7 +14,7 @@
   <img src="img/ingot.svg">
   2017新春红包
   <br>
-  <small>本场活动开始时间/活动已结束</small>
+  <small>本场活动开始时间</small>
   <div>12:00</div>
 </h2>
 
@@ -22,10 +23,10 @@
 <div class="box">
 <table>
   <caption>中奖记录</caption>
-  {% for i in range(0, 10) %}
+  {% for item in log_list %}
   <tr>
-    <td>用户名{{i}}</td>
-    <td>66</td>
+    <td>{{item['name']}}</td>
+    <td>{{item['price']}}</td>
     <td>2017-01-28 12:01:14</td>
   </tr>
   {% endfor %}
