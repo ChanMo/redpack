@@ -1515,13 +1515,18 @@ body {
 
 h2 {
   position: absolute;
-  top: 20%;
+  top: 18%;
   left: 0;
   width: 100%;
   text-align: center;
   color: #dcc233; }
   h2 img {
     width: 10vw; }
+  h2 small {
+    font-size: 0.85rem; }
+  h2 div {
+    display: block;
+    font-size: 3.5rem; }
 
 .button_hollow {
   border-color: #dcc233;
@@ -1532,7 +1537,7 @@ h2 {
 
 #main-action {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: block;
@@ -1565,7 +1570,7 @@ h2 {
   bottom: 10vh;
   left: 50%;
   transform: translateX(-50%);
-  height: 14.8rem;
+  height: 11.6rem;
   overflow-y: hidden; }
 
 table {

@@ -27,11 +27,14 @@
 
 
 <h2>
-<img src="img/ingot.svg">
+  <img src="img/ingot.svg">
   2017新春红包
+  <br>
+  <small>活动开始倒计时</small>
+  <div>20:00</div>
 </h2>
 
-<button id="main-action" class="button button_hollow" data-modal-toggle>点我抢红包</button>
+<button id="main-action" class="button button_hollow">点我抢红包</button>
 
 <div class="box">
 <table>
@@ -100,20 +103,80 @@
 </table>
 </div>
 
-<div class="modal-bg" data-modal-toggle></div>
+<div class="modal-bg" data-modal-close></div>
 <div class="modal">
   <div class="modal__main">
-  <img src="img/redpack.svg">
-  <p>恭喜您抢到价值66元现金红包！</p>
-  <button class="button button_hollow button_size_small" data-modal-toggle>确&nbsp;&nbsp;定</button>
+  <img>
+  <p></p>
+  <button class="button button_hollow button_size_small" data-modal-close>确&nbsp;&nbsp;定</button>
   </div>
 </div>
 
     <!-- build:js js/app.min.js -->
     <script src="js/jquery.min.js"></script>
     <script src="js/what-input.min.js"></script>
-    <script src="js/_modal.js"></script>
-    <script src="js/app.js"></script>
+    <!--script src="js/_modal.js"></script-->
+    <!--script src="js/app.js"></script-->
     <!-- endbuild -->
+    
+<script>
+$(function(){
+
+  /**
+  var nowDate = new Date();
+  var now = Math.round(now.getTime()/1000);
+  var time_start = '1484805672';
+  var time_end = '1484841600';
+  if(now < time_start){
+    time_ok = false;
+  }else{
+    time_ok = true;
+  }
+  **/
+
+
+  is_used = false; // check user used status
+
+  /** prevent touch event **/
+  $("body").on("touchmove", function(event){
+    event.preventDefault();
+  });
+
+  $("[data-modal-close]").on("click", function(e){
+    e.preventDefault();
+    $(".modal").removeClass("modal-active");
+    $(".modal-bg").hide();
+  });
+
+  $("#main-action").on("click", function(event){
+    event.preventDefault();
+    $(".modal").addClass("modal-active");
+    $(".modal-bg").show();
+    if(is_used){
+      $(".modal img").attr("src", 'img/bowl.svg');
+      $(".modal p").html('抢红包次数已用完！');
+    }else{
+      is_used = true;
+      $.ajax({
+        url: 'js/get_result.json',
+        dataType: 'json',
+        success: function(result){
+          console.log(result);
+          is_used = true;
+          $(".modal p").html(result['message']);
+          $(".modal img").attr("src", result['image']);
+        },
+      });
+    }
+  });
+
+  /** autuscroll **/
+  window.setInterval(function(){
+    $("tr:last-child").insertBefore("tr:first-child");
+  }, 2000);
+
+});
+</script>
+
  </body>
 </html>
