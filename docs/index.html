@@ -28,8 +28,8 @@
   <img src="img/ingot.svg">
   2017新春红包
   <br>
-  <small>活动开始倒计时</small>
-  <div>20:00</div>
+  <small>本场活动开始时间/活动已结束</small>
+  <div>12:00</div>
 </h2>
 
 <button id="main-action" class="button button_hollow">点我抢红包</button>
@@ -115,18 +115,8 @@
 <script>
 $(function(){
 
-  /**
-  var nowDate = new Date();
-  var now = Math.round(now.getTime()/1000);
-  var time_start = '1484805672';
-  var time_end = '1484841600';
-  if(now < time_start){
-    time_ok = false;
-  }else{
-    time_ok = true;
-  }
-  **/
-
+  //time_start = '1484805672';
+  //time_end = '1484841600';
 
   is_used = false; // check user used status
 
@@ -169,6 +159,20 @@ $(function(){
   }, 2000);
 
 });
+
+/**
+function check_time(){
+  var time_ok = false;
+  var nowDate = new Date();
+  var now = Math.round(nowDate.getTime()/1000);
+  if(now < time_start || now > time_end){
+    time_ok = false;
+  }else{
+    time_ok = true;
+  }
+  return time_ok;
+}
+**/
 </script>
 
  </body>
